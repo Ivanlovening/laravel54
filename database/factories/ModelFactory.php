@@ -22,3 +22,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+//文章数据填充
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(6),//6个单词
+        'content' => $faker->paragraph(10)//10个句子的文章
+    ];
+});
+//填充操作
+/*php artisan tinker
+ * factory(App\Post::class,10)->make()生成10篇，只显示不会加到数据库
+ * factory(App\Post::class,10)->create()
+ *
+ *
+ */
