@@ -1,6 +1,8 @@
 @extends('layout.main')
 @section('content')
-
+    @if(!empty(session('success')))
+        {{session('success')}}
+        @endif
     <div class="col-sm-8 blog-main">
         <div class="blog-post">
             <div style="display:inline-flex">
@@ -15,7 +17,7 @@
 
             <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}}<a href="#">Kassandra Ankunding2</a></p>
 
-            <p><p>{{$post->content}}<p><br></p></p>
+            <p><p>{!!$post->content!!}<p><br></p></p>
             <div>
                 <a href="/posts/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
 

@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
-
+    //'default' => env('FILESYSTEM_DRIVER', 'public'),
+    'default' => 'public',
     /*
     |--------------------------------------------------------------------------
     | Default Cloud Filesystem Disk
@@ -26,8 +26,8 @@ return [
     |
     */
 
-    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
-
+    //'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    'cloud' => 's3',
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
