@@ -12,8 +12,10 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
+    //策略注册 给post模型创建的post策略类
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        //'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Post' => 'App\Policies\PostPolicy',
     ];
 
     /**
@@ -25,6 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //给所有权限注册门卫
+        //获取所有的权限，循环
+        $premissions = \App\AdminPremission::all();
+        foreach ($premissions as $premission){
+            Gate::define($premission->name,function($user) use($premission){
+               return $user->hasPremission($premission);
+            });
+        }
     }
 }

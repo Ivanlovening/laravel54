@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        //注册自己的guard
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ]
     ],
 
     /*
@@ -69,7 +74,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        //注册自己的provider
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\AdminUser::class,
+        ]
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
